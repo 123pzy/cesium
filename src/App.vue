@@ -42,6 +42,17 @@ onMounted(() => {
     // creditContainer:document.createElement('div')
     vrButton: true,
     scene3DOnly: true, // 节省GPU内存，让只支持3D模式
+    contextOptions: {
+      webgl: {
+        alpha: true,
+        depth: true,
+        stencil: true,
+        antialias: true,
+        premultipliedAlpha: true,
+        preserveDrawingBuffer: true, //通过canvas.toDataURL()实现截图需要将该项设置为true
+        failIfMajorPerformanceCaveat: true,
+      },
+    },
     // 设置天空盒子
     // skyBox: new Cesium.skyBox({
     //   source: {
@@ -67,16 +78,32 @@ onMounted(() => {
   console.log(radians);
 });
 
+// 场景截图
+function screenshot() {
+  var canvas = viewer.scene.canvas;
+  var image = canvas.toDataURL("image/png");
+  var imgElement = document.createElement("img");
+  imgElement.src = image;
+  document.body.appendChild(imgElement);
+}
 </script>
 
 <template>
   <HelloCesium></HelloCesium>
   <div id="cesiumContanier"></div>
+  <button @click="screenshot">截图并保存</button>
 </template>
 
 <style>
 #cesiumContanier {
   height: 100%;
   width: 100%;
+}
+button {
+  height: 50px;
+  width: 100px;
+  z-index: 999;
+  position: absolute;
+  top: 0;
 }
 </style>
