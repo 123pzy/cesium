@@ -20,7 +20,7 @@ Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(
 
 // 设置cesium的Token
 Cesium.Ion.defaultAccessToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlNTdjYWQxNy02MTRmLTQ4MTMtOWNjMC0zNDg2N2M4YWI1YTQiLCJpZCI6MTQ5NjE5LCJpYXQiOjE2ODc4NTY2NDJ9.wQCXDM5G0L5FNVvIDzR5nYe6J5I_zzo8JEn6w7QQ0Is";
+  "your token";
 
 onMounted(() => {
   window.viewer = new Cesium.Viewer("cesiumContanier", {
